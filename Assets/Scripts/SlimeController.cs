@@ -10,6 +10,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Diagnostics;
+using System.Reflection;
 
 public class SlimeController : MonoBehaviour
 {
@@ -143,11 +144,13 @@ public class SlimeController : MonoBehaviour
             // カメラの向きに基づいて移動方向を変換
             if (moveCamera != null)
             {
-                float cameraYRotation = moveCamera.GetCameraYRotation();
-                Quaternion cameraRotation = Quaternion.Euler(0, cameraYRotation, 0);
-                UnityEngine.Debug.Log("cameraYRotation"+cameraYRotation);
-                UnityEngine.Debug.Log("cameraRotation"+cameraRotation);
-                moveSlp = cameraRotation * new Vector3(moveX, 0, 0);
+                float cameraYRotation = moveCamera.GetCameraYRotation();//横回転の値取得
+                Quaternion cameraRotation = Quaternion.Euler(0, cameraYRotation, 0);//カメラの回転に変換
+                moveDir = cameraRotation * moveDir;//開店した方向に移動する
+                moveSlp = cameraRotation * new Vector3(moveX, 0, 0);//同じ
+                // キャラクターの向きをカメラに合わせる
+                transform.rotation = Quaternion.Euler(-90, 90, cameraYRotation);
+
             }
 
 
