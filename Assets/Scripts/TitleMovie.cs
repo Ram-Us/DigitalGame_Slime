@@ -37,7 +37,7 @@ public class TitleMovie : MonoBehaviour
     {
         
 
-        if(isStarting && Input.anyKey)
+        if(isStarting && Input.anyKey && !isInputting)
         {
             audioSource.PlayOneShot(click);
             isInputting = true;
