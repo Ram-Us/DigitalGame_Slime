@@ -88,10 +88,13 @@
 **ディレクトリ構成（概要）**
   Plaintext
   
-  
   DigitalGame_Slime/
+  
   ├── Assets/             # スクリプト、モデル、素材、シーンファイル
+  
   ├── Packages/           # Unityパッケージ依存関係
+  
   ├── ProjectSettings/    # プロジェクト設定
+  
   └── README.md           # 本ファイル
 
